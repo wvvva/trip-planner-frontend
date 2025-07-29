@@ -1,0 +1,465 @@
+/* NewTripButton Styles */
+.new-trip-button {
+  width: 100px;
+  height: 100px;
+  margin-left: -40px;
+  margin-top: -40px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-primary);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.new-trip-button-circle {
+  width: 60px;
+  height: 60px;
+  margin-left: 40px;
+  margin-top: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-alter-light);
+  border-radius: 100%;
+  box-shadow: 0 5px 12px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.new-trip-button-circle:hover {
+  background-color: var(--color-primary-alter-light);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.button-text {
+  
+  color: var(--color-primary-text);
+  font-weight: 600;
+  font-size: 0.875rem;
+  
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-70%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.button-text-container{
+  background-color: white;
+
+  height: 58px;
+  width: 180px;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+
+  left: 140%;
+  top: 65%;
+
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  animation: fadeIn 0.3s ease forwards;
+  z-index: auto;
+  border-radius: 0px 30px 30px 0px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  padding-left: 12px;
+}
+
+/* Avatar Styles */
+.user-profile {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #b9afcf;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  margin-right: 2vw;
+}
+
+/* Header Styles */
+.header-container {
+  /* height: 100px; */
+  display: flex;
+  /* gap: 20px; */
+  justify-content: space-between;
+}
+
+
+/* Decorative circles */
+.progress-circles {
+  width: 20vw;
+  display: flex;
+  margin-left: 2vw;
+
+  align-items: center;
+
+  gap: 30px;
+}
+
+.progress-circle {
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+}
+
+.progress-circle:nth-child(1) {
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-primary-light);
+}
+
+.progress-circle:nth-child(2) {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+  background-color: var(--color-primary-light);
+}
+
+.progress-circle:nth-child(3) {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  background-color: var(--color-primary-light);
+}
+
+.progress-circle:nth-child(4) {
+  width: 20px;
+  height: 20px;
+  margin-top: 15px;
+  background-color: var(--color-primary-light);
+}
+
+/* Navigation Styles */
+
+.nav-container {
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+
+  margin-top: 5%;
+  margin-right: 2vw;
+
+  padding: 0 20px;
+  gap: 1rem;
+  background-color: var(--color-primary);
+  border-radius: 30px;
+}
+
+.nav-button {
+  padding: 5px 10px;
+  border-radius: 30px;
+
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 500;
+
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  background-color: var(--color-primary);
+}
+
+.nav-button.active {
+  background-color: white;
+  color: var(--color-primary-dark);
+  
+}
+
+.nav-button.inactive {
+  background-color: var(--color-primary);
+  color: white;
+
+}
+
+/* Trip Stats Card Styles */
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-primary-text);
+}
+
+.stats-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 25vw;
+  height: 23vh;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.stats-list {
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.stat-text {
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.stat-total {
+  color: var(--color-text);
+  margin-top: 30%;
+  padding-top: 10px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.donut-chart {
+  width: 50%;
+  height: 100%;
+}
+
+.donut :global(.recharts-wrapper){
+  width: 200px !important;
+  height: 200px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.donut :global(.recharts-surface){
+  width: 200px !important;
+  height: 200px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.donut {
+  margin: 0;
+  padding: 0;
+}
+
+.no-trips{
+  font-size: 13px;
+  color: var(--color-text);
+  margin-top: 50%;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Map Card Styles */
+.map-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 26.3vw;
+  height: 50.2vh;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 60%;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.map-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #9ca3af;
+}
+
+.map-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Upcoming Trips Styles */
+
+.upcoming-card {
+  background-color: white;
+  border-radius: 10px;
+  padding:5px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 30vw;
+  height: 81.6vh;
+}
+
+.upcoming-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.upcoming-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  width: 100%;
+  border-bottom: 1px solid var(--color-primary-light);
+
+  padding: 8px 0;
+}
+
+.upcoming-time {
+  font-size: 12px;
+  color: var(--color-primary);
+  margin-bottom: 3px;
+}
+
+.upcoming-flight,
+.upcoming-trip {
+  font-size: 13px;
+  color: var(--color-text);
+  margin-bottom: 5px;
+}
+
+.upcoming-detail{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Calendar Styles */
+.calendar-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 30vw;
+  height: 81.6vh;
+}
+
+.calendar-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.custom-calendar {
+  background-color: var(--color-primary-light) !important; 
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--color-primary-text);
+  border: none !important;
+  font-family: 'Montserrat' !important;
+  width: 100% !important;
+  height: 100%;
+}
+
+.custom-calendar :global(.react-calendar__navigation__label) {
+  font-family: 'Montserrat' !important;
+}
+
+.custom-calendar :global(.react-calendar__tile--active) {
+  background-color: var(--color-secondary-light) !important;
+  color: var(--color-text) !important;
+  border-radius: 100px;
+}
+
+.custom-calendar :global(.react-calendar__tile--now) {
+  background: var(--color-primary-light) !important;
+}
+
+.custom-calendar :global(.react-calendar__tile--now):global(.react-calendar__tile--active) {
+  background-color: var(--color-secondary-light) !important;
+  /* color: var(--color-primary-text) !important; */
+  border-radius: 100px;
+}
+
+.custom-calendar :global(.react-calendar__tile:hover) {
+  background-color: var(--color-secondary-light) !important;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.custom-calendar :global(.react-calendar__month-view__days__day--weekend) {
+  color: var(--color-secondary-dark); /* Or any weekend-specific color */
+  font-weight: 500;
+}
+
+.hasEvent {
+  border-radius: 100px;
+  border: 2px solid var(--color-secondary-dark) !important;
+  background: var(--color-secondary-dark) !important;
+  color: white !important;
+}
+
+.pastDate {
+  color: rgb(173, 173, 173) !important;
+  pointer-events: none !important;
+}
+
+/* Event List Styles */
+
+.eventList {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.eventItem {
+  background-color: var(--color-secondary-light);
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 90%;
+  height: 20px;
+
+  font-size: 13px;
+
+  display: flex;
+  align-items: center;
+}
+
+.eventNoItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 14px;
+}

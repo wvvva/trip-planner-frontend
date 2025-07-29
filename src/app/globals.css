@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-primary: #B1C29E;
+  --color-primary-light: #E1EBD7;
+  --color-primary-dark: #849176;
+  --color-primary-text: #646E57;
+  --color-primary-alter: #659287;
+  --color-primary-alter-light: #C4DBCC;
+  --color-secondary: #FFE6A9;
+  --color-secondary-light: #FFF1CF;
+  --color-secondary-dark: #DEAA79;
+  --color-text: #292e25;
+  --color-light: #F6F6F6;
+  --color-gray: #D9D9D9;
+}
+
+body {
+  background-color: var(--color-light);
+  font-family: 'Montserrat';
+  overflow: hidden;
+}
