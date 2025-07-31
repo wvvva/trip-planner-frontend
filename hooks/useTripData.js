@@ -13,7 +13,6 @@ export const useTripData = (userId) => {
         value: totalValue
       }];
       setTripStats(updatedStats);
-      console.log(updatedStats);
     };
   
     if (userId != null) {

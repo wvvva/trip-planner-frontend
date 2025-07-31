@@ -13,8 +13,6 @@ export const query = async (query, variables={}) => {
         })
       })
       const data = await response.json()
-      console.log(variables)
-      console.log(data)
       return data
     } catch (error) {
       console.error(`Error fetching ${query}:`, error)

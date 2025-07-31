@@ -2,6 +2,7 @@
 import { query } from './api-utils'
 import { getTripByUserIdAndStatusQuery } from './query-util'
 import {useMapsLibrary} from '@vis.gl/react-google-maps';
+import { Loader } from '@googlemaps/js-api-loader'
 
 export async function calculateTripStats(userId) {
   const statuses = [
@@ -65,32 +66,27 @@ export const validateTripData = (trip) => {
   return errors
 } 
 
-export const initMap = () => {
-  const mapLib = useMapsLibrary('maps');
+export const loader = new Loader({
+  apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API,
+  version: 'weekly',
+  libraries: ['maps']
+})
 
-  const map = new mapLib.Map(document.getElementById("map"), {
-    center: { lat: 20.773, lng: -156.01 }, // Hana, HI
-    zoom: 12,
-    // In the cloud console, configure this Map ID with a style that enables the
-    // "Locality" feature layer.
-    mapId: process.env.NEXT_PUBLIC_GMAP_STYLE_DASH, // <YOUR_MAP_ID_HERE>,
-  });
-
-  featureLayer = map.getFeatureLayer("LOCALITY");
-
-  const featureStyleOptions = {
-    strokeColor: "#810FCB",
-    strokeOpacity: 1.0,
-    strokeWeight: 3.0,
-    fillColor: "#810FCB",
-    fillOpacity: 0.5,
+export async function findBoundary(country, center) {
+  const request = {
+    textQuery: country,
+    fields: ["id", "location"],
+    includedType: "locality",
+    locationBias: center,
   };
+  const { Place } = await google.maps.importLibrary("places");
+  //@ts-ignore
+  const { places } = await Place.searchByText(request);
 
-
-  featureLayer.style = (options) => {
-    if (options.feature.placeId == "ChIJ0zQtYiWsVHkRk8lRoB1RNPo") {
-      return featureStyleOptions;
-    }
-  };
+  if (places.length) {
+    const place = places[0];
+    return place.id;
+  } else {
+    console.log("No results");
+  }
 }
-

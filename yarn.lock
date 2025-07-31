@@ -50,6 +50,11 @@
   resolved "https://registry.npmjs.org/@fullcalendar/react/-/react-6.1.18.tgz"
   integrity sha512-Jwvb+T+/1yGZKe+UYXn0id022HJm0Fq2X/PGFvVh/QRYAI/6xPMRvJrwercBkToxf6LjqYXrDO+/NhRN6IDlmg==
 
+"@googlemaps/js-api-loader@^1.16.10":
+  version "1.16.10"
+  resolved "https://registry.npmjs.org/@googlemaps/js-api-loader/-/js-api-loader-1.16.10.tgz"
+  integrity sha512-c2erv2k7P2ilYzMmtYcMgAR21AULosQuUHJbStnrvRk2dG93k5cqptDrh9A8p+ZNlyhiqEOgHW7N9PAizdUM7Q==
+
 "@googlemaps/js-api-loader@1.16.8":
   version "1.16.8"
   resolved "https://registry.npmjs.org/@googlemaps/js-api-loader/-/js-api-loader-1.16.8.tgz"

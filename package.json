@@ -14,6 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.2.3",
     "@fullcalendar/daygrid": "^6.1.18",
     "@fullcalendar/react": "^6.1.18",
+    "@googlemaps/js-api-loader": "^1.16.10",
     "@react-google-maps/api": "^2.20.7",
     "@vis.gl/react-google-maps": "^1.5.4",
     "next": "^14.2.30",
