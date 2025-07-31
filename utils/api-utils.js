@@ -1,8 +1,6 @@
-import { getTripByUserIdAndStatusQuery } from './query-util'
-
 const baseUrl = 'http://localhost:8080'
 
-export const getTripsByUserIdAndStatus = async (userId, status) => {
+export const query = async (query, variables={}) => {
     try{
       const response = await fetch(baseUrl + '/graphql', {
         method: 'POST',
@@ -10,14 +8,16 @@ export const getTripsByUserIdAndStatus = async (userId, status) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          query: getTripByUserIdAndStatusQuery(userId, status)
+          query,
+          variables
         })
       })
       const data = await response.json()
+      console.log(variables)
       console.log(data)
       return data
     } catch (error) {
-      console.error('Error fetching completed trips:', error)
+      console.error(`Error fetching ${query}:`, error)
       return []
     }
 }

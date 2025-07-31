@@ -2,7 +2,24 @@ import { useState, useEffect } from 'react'
 import { calculateTripStats } from '@/utils/utils'
 
 export const useTripData = (userId) => {
-  const [tripStats, setTripStats] = useState(calculateTripStats(userId))
+  const [tripStats, setTripStats] = useState(null)
+
+  useEffect(() => {
+    const fetchTripStats = async () => {
+      const stats = await calculateTripStats(userId);
+      const totalValue = stats.reduce((acc, entry) => acc + entry.value, 0);
+      const updatedStats = [...stats, {
+        name: 'Total',
+        value: totalValue
+      }];
+      setTripStats(updatedStats);
+      console.log(updatedStats);
+    };
+  
+    if (userId != null) {
+      fetchTripStats();
+    }
+  }, [userId]);
 
   const [upcomingTrips, setUpcomingTrips] = useState([
     { 

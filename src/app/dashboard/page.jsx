@@ -11,7 +11,7 @@ import { useTripData } from '@/hooks/useTripData'
 
 const Dashboard = () => {
   const userId = 1
-  
+
   const [currentMonth, setCurrentMonth] = useState('August 2025')
   const { tripStats, upcomingTrips, calendarTrips } = useTripData(userId)
 
