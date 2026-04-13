@@ -1,6 +1,5 @@
-// import { getCompletedTrips, getPlannedTrips, getCanceledTrips } from './api-utils'
-import { query } from './api-utils'
-import { getTripByUserIdAndStatusQuery } from './query-util'
+// Backend calls are disabled for now. Using in-session memory store instead.
+import { getTripStats } from './memory-store'
 import {useMapsLibrary} from '@vis.gl/react-google-maps';
 import { Loader } from '@googlemaps/js-api-loader'
 
@@ -11,17 +10,14 @@ export async function calculateTripStats(userId) {
     { label: 'Cancelled', keys: ['CANCELLED'], color: 'var(--color-gray)' },
   ];
 
-  const promises = statuses.map(async ({ label, keys, color }) => {
-    const res = await query(getTripByUserIdAndStatusQuery, { userId, status: keys });
-    return {
-      name: label,
-      value: res.data.getTripByUserIdAndStatus.length,
-      color
-    };
-  });
+  const counts = getTripStats(userId)
+  const stats = statuses.map(({ label, keys, color }) => ({
+    name: label,
+    value: keys.reduce((acc, key) => acc + (counts[key] || 0), 0),
+    color
+  }))
 
-  const stats = await Promise.all(promises);
-  return stats;
+  return stats
 }
 
 export const filterUpcomingTrips = (trips, limit = 4) => {

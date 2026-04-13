@@ -24,13 +24,7 @@ const Dashboard = () => {
           <MapCard />
         </div>
         <UpcomingTrips trips={upcomingTrips} />
-        <TripsCalendar 
-            trips={[
-              { title: 'Trip to NYC', date: '2025-08-10' },
-              { title: 'Flight to LA', date: '2025-08-10' },
-              { title: 'Trip to Hawaii', date: '2025-08-12' },
-            ]}
-        />
+        <TripsCalendar trips={calendarTrips} />
       </div>
     </div>
   )

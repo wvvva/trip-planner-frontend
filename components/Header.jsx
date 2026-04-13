@@ -3,11 +3,11 @@ import styles from './component.module.css'
 import NewTripButton from './NewTripButton'
 import Navigation from './Navigation'
 
-const Header = ({home, trip, map, buddy}) => {
+const Header = ({home, trip, map, buddy, showNewTripButton = true}) => {
   return (
-    <header className={styles['header-container']}>
+    <header className={styles['header-shell']}>
       <div className={styles['header-container']}>
-        <NewTripButton />
+        <NewTripButton showInner={showNewTripButton} />
         {home && (
           <div className={styles['progress-circles']}>
             <div className={styles['progress-circle']}></div>

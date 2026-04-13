@@ -15,6 +15,10 @@
   position: relative;
 }
 
+.new-trip-button--static {
+  cursor: default;
+}
+
 .new-trip-button-circle {
   width: 60px;
   height: 60px;
@@ -93,6 +97,15 @@
 }
 
 /* Header Styles */
+.header-shell {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 24px 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .header-container {
   /* height: 100px; */
   display: flex;
@@ -333,6 +346,11 @@
   border-bottom: 1px solid var(--color-primary-light);
 
   padding: 8px 0;
+  cursor: pointer;
+}
+
+.upcoming-item:hover {
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .upcoming-time {
@@ -449,6 +467,11 @@
 
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.eventItem:hover {
+  background-color: var(--color-secondary);
 }
 
 .eventNoItem {
