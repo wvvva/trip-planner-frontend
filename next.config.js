@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  turbopack: {},
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

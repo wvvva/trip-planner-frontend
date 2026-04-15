@@ -12,6 +12,7 @@ import {
   faEllipsisVertical
 } from '@fortawesome/free-solid-svg-icons'
 import { setTripsForUser } from '@/utils/memory-store'
+import { planTrip } from '@/utils/api-utils'
 
 const Trip = () => {
   const [trips, setTrips] = useState([
@@ -70,166 +71,6 @@ const Trip = () => {
   const [editingName, setEditingName] = useState('')
   const [pendingEventId, setPendingEventId] = useState(null)
   const userId = 1
-
-  const placeholderAgentOutput = {
-    split: 'validation',
-    total_samples: 1,
-    successful: 1,
-    failed: 0,
-    budget_compliance_rate: 1.0,
-    room_type_match_rate: 0.0,
-    cuisine_match_rate: 1.0,
-    house_rule_compliance_rate: 1.0,
-    avg_attraction_score: 0.0,
-    avg_cost_to_budget_ratio: 0.9294,
-    per_sample: [
-      {
-        user_id: '113815392849087130851',
-        query_text:
-          "User ID: 113815392849087130851. Please create a travel plan for me where I'll be departing from San Francisco and heading to Chicago for a 3-day trip from 2022-03-02 to 2022-03-04, 2022. I need a Private room for accommodation. I'd like to have Eastern Asian Cuisine and Seafood & Organic Cuisine options for dining. Can you help me keep this journey within a budget of $1700?",
-        budget_compliance: {
-          passed: true,
-          detail: 'Cost $1580 vs budget $1700 (OK)'
-        },
-        room_type_match: {
-          passed: false,
-          detail: "Required room type 'private room' \u2014 NOT found in itinerary accommodation text."
-        },
-        cuisine_match: {
-          passed: true,
-          detail:
-            "Cuisines required: ['Eastern Asian Cuisine', 'Seafood & Organic Cuisine']; matched: ['Seafood & Organic Cuisine']."
-        },
-        house_rule_compliance: {
-          passed: true,
-          detail: 'No house rule requirement.'
-        },
-        attraction_score: 0.0,
-        itinerary: {
-          trip_summary:
-            'A 3-day cultural and culinary exploration in Chicago with a focus on Eastern Asian and Seafood cuisines.',
-          origin: 'San Francisco',
-          destination: 'Chicago',
-          days: 3,
-          people: 1,
-          total_estimated_cost: 1580.0,
-          budget: 1700.0,
-          within_budget: true,
-          days_plan: [
-            {
-              day: 1,
-              date: '2026-05-02',
-              accommodation: 'Big bedroom in Astoria, 20 min from Central Park',
-              accommodation_cost: 110.0,
-              meals: [
-                "BIG & little's Restaurant \u2014 lunch",
-                "Chief O'Neill's Pub & Restaurant \u2014 dinner"
-              ],
-              meal_cost: 40.0,
-              activities: [
-                {
-                  time: '10:00 AM',
-                  activity: 'Explore the BP Pedestrian Bridge',
-                  location: 'BP Pedestrian Bridge',
-                  estimated_cost: 0.0,
-                  notes: 'Enjoy scenic views of the city.'
-                },
-                {
-                  time: '1:00 PM',
-                  activity: 'Visit the Ukrainian National Museum',
-                  location: 'Ukrainian National Museum',
-                  estimated_cost: 0.0,
-                  notes: 'Free admission.'
-                },
-                {
-                  time: '4:00 PM',
-                  activity: 'Walk around Wrigley Field',
-                  location: 'Wrigley Field',
-                  estimated_cost: 0.0,
-                  notes: 'Experience the historic baseball stadium.'
-                }
-              ],
-              daily_total: 150.0
-            },
-            {
-              day: 2,
-              date: '2026-05-03',
-              accommodation: 'Big bedroom in Astoria, 20 min from Central Park',
-              accommodation_cost: 110.0,
-              meals: [
-                'Hoanh Long Vietnamese & Chinese Restaurant \u2014 lunch',
-                'La Tropicana Restaurant \u2014 dinner'
-              ],
-              meal_cost: 50.0,
-              activities: [
-                {
-                  time: '10:00 AM',
-                  activity: 'Visit The Art Institute of Chicago',
-                  location: 'The Art Institute of Chicago',
-                  estimated_cost: 0.0,
-                  notes: 'Renowned art museum with free admission on certain days.'
-                },
-                {
-                  time: '1:00 PM',
-                  activity: 'Explore the Nicholas J. Melas Centennial Fountain',
-                  location: 'Nicholas J. Melas Centennial Fountain',
-                  estimated_cost: 0.0,
-                  notes: 'A beautiful spot for relaxation.'
-                },
-                {
-                  time: '4:00 PM',
-                  activity: 'Enjoy an escape room experience at Fox In A Box Escape Room Chicago',
-                  location: 'Fox In A Box Escape Room Chicago',
-                  estimated_cost: 30.0,
-                  notes: 'Fun and interactive experience.'
-                }
-              ],
-              daily_total: 190.0
-            },
-            {
-              day: 3,
-              date: '2026-05-04',
-              accommodation: 'Big bedroom in Astoria, 20 min from Central Park',
-              accommodation_cost: 110.0,
-              meals: [
-                "Ditka's Restaurant Chicago \u2014 lunch",
-                "BIG & little's Restaurant \u2014 dinner"
-              ],
-              meal_cost: 60.0,
-              activities: [
-                {
-                  time: '10:00 AM',
-                  activity: "Visit Saints Volodymyr & Olha Ukrainian Catholic Church",
-                  location: 'Saints Volodymyr & Olha Ukrainian Catholic Church',
-                  estimated_cost: 0.0,
-                  notes: 'Cultural and historical significance.'
-                },
-                {
-                  time: '1:00 PM',
-                  activity: 'Explore the Escape Artistry - Time Gallery',
-                  location: 'Escape Artistry - Time Gallery',
-                  estimated_cost: 30.0,
-                  notes: 'Engaging escape room experience.'
-                },
-                {
-                  time: '4:00 PM',
-                  activity: 'Stroll through the scenic areas around the city',
-                  location: 'Chicago',
-                  estimated_cost: 0.0,
-                  notes: 'Enjoy the walkable city environment.'
-                }
-              ],
-              daily_total: 300.0
-            }
-          ],
-          personalization_notes:
-            "This itinerary includes a mix of cultural and historical attractions, along with dining options that align with the user's cuisine preferences. Activities are spread evenly across the days, ensuring a balanced experience.",
-          warnings: []
-        },
-        error: null
-      }
-    ]
-  }
 
   const handleAddTrip = () => {
     setTrips((prev) => [
@@ -372,10 +213,6 @@ const Trip = () => {
     return `${core} ${roomText} ${cuisineText} ${likesText} ${dislikesText} ${houseRuleText}`.trim()
   }
 
-  const fakeGeneratePlan = () => {
-    return placeholderAgentOutput
-  }
-
   const isTravelActivity = (activity) => {
     if (!activity?.activity) return false
     return /(flight|drive|transfer|travel|train|bus|uber|taxi|ride)/i.test(activity.activity)
@@ -415,9 +252,9 @@ const Trip = () => {
       query: '',
       org: origin || null,
       dest: destination || null,
-      days: Number.isFinite(daysRaw) ? Math.min(Math.max(daysRaw, 1), 30) : null,
-      people_number: Number.isFinite(peopleRaw) ? Math.max(peopleRaw, 1) : null,
-      budget: Number.isFinite(budgetRaw) ? Math.max(budgetRaw, 0) : null,
+      days: daysRaw > 0 ? Math.min(daysRaw, 30) : null,
+      people_number: peopleRaw > 0 ? peopleRaw : null,
+      budget: Number.isFinite(budgetRaw) && budgetRaw > 0 ? budgetRaw : null,
       room_type: roomType || null,
       cuisines: cuisines.length ? cuisines : [],
       attraction_likes: attractionLikes.length ? attractionLikes : [],
@@ -428,17 +265,21 @@ const Trip = () => {
     payload.query = buildQuery(payload)
 
     setIsGenerating(true)
-    await new Promise((resolve) => setTimeout(resolve, 5000))
-    const agentOutput = fakeGeneratePlan()
+    try {
+      const response = await planTrip(payload)
+      const agentOutput = response.itinerary
 
-    setTrips((prev) =>
-      prev.map((trip, index) =>
-        index === activeIndex ? { ...trip, plan: { agentOutput } } : trip
+      setTrips((prev) =>
+        prev.map((trip, index) =>
+          index === activeIndex ? { ...trip, plan: { agentOutput } } : trip
+        )
       )
-    )
-
-    setIsGenerating(false)
-    setIsFormOpen(false)
+      setIsFormOpen(false)
+    } catch (err) {
+      alert(`Plan generation failed: ${err.message}`)
+    } finally {
+      setIsGenerating(false)
+    }
   }
 
   const openPlanForm = () => {
